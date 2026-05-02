@@ -64,6 +64,8 @@ app.post("/todos", (req, res) => {
   res.status(201).json(newTodo);
 });
 
+// Edit an item on the todo not all the items (PUT will replace or edit all the items, even if client don't pass all the properties)
+// Also note that the req param always comes as a string, so we'll always need to parse as interger before we use the data to search
 app.patch("/todos/:id", (req, res) => {
   const requestId = parseInt(req.params.id);
   const todo = todos.find((data) => data.id === requestId);
